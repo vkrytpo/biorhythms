@@ -1,0 +1,44 @@
+PyoRhythm
+=========
+
+Various biorhythm computation scripts for Python 3. Matplotlib is required for some of them.
+Graphical output is shown on the screen and written to PDFs (in the working directory).
+
+* for a single person:
+----------------------
+
+bioplot.py:
+  Plot a chart for the next 31 days (all rhythms)
+
+bioyear.py:
+  Plot biorhythm chart for a whole year (primary rhythms)
+
+biowarn.py:
+  Create a "traffic light"-style HTML page of critical/mini-critical warnings, like the
+  1970s Kosmos-1 biorhythm calculator
+
+biocal.py:
+  Create a PDF with a whole-year biorhythm calendar (requires the ReportLab module)
+
+conky/bioconky.py:
+  Modified version of biowarn.py that outputs Conky markup
+
+* for two or more people (biorhythmic matching/compatibility):
+--------------------------------------------------------------
+
+bio_imdb.py:
+  Compute compatibility between two persons. Birthday information is taken either from IMDb, a built-in list, or directly via a date on the commandline.
+
+biocompat.py:
+  Compute biorhythmic compatibility between two persons (using primary and I-Ching rhythms)
+
+compattable.py:
+  Compute a compatibility score for each pair in a group of people and
+  print a table of results
+
+biomatch.py:
+  Show dates on which nobody in a given group has a critcal or mini-critical day
+
+kosmos_astro.py:
+  Computes partner compatibility like the Kosmos Astro
+

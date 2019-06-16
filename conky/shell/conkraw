@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+python /home/martin/bin/rise.py
+python /home/martin/bin/nextmoon.py
+
+python /home/martin/bin/swiss_moon.py|python /home/martin/bin/sign_de.py
+python /home/martin/bin/swiss_moon_next.py
+
+cat /tmp/moon.txt
+echo
+
+/home/martin/bin/bioconky.py 0
+/home/martin/bin/bioconky.py 1
+/home/martin/bin/bioconky.py 2
+/home/martin/bin/bioconky.py 3
+/home/martin/bin/bioconky.py 4
+

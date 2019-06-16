@@ -1,0 +1,68 @@
+imlib_cache_size 0
+background no
+update_interval 10.0 
+use_xft yes
+xftfont waree book:size=10
+gap_x 0
+gap_y 50
+minimum_size 230 230
+maximum_width 230
+alignment top_left
+color1 ffffff
+color2 ffffff
+color3 fffb8e
+color4 65b5fb
+own_window yes
+own_window_transparent no
+own_window_argb_visual yes
+own_window_argb_value 140
+own_window_type normal
+#own_window_class conky-semi
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades no
+draw_outline yes
+draw_borders no
+
+TEXT
+
+${color1}${font defused:size=20}${time %d}. ${voffset -11}${font Droid Sans:size=12}${time %B %Y}
+
+${execi 600 xplanet -config /home/martin/bin/moon-xplanet.conf -body moon -origin earth -output /tmp/moon.png -num_times 1 -geometry 100x100}${image /tmp/moon.png -p 120,20}${color1}${font Droid Sans:size=14}  ${time %A}
+${font Source Code Pro:size=9}${execpi 600 python /home/martin/bin/rise.py}
+${voffset 5}${color2}${execpi 300 python /home/martin/bin/nextmoon.py}
+${color4}${execpi 300 python /home/martin/bin/swiss_moon.py|python /home/martin/bin/sign_de.py}
+${color4}${execpi 300 python /home/martin/bin/swiss_moon_next.py}
+${voffset 5}${color orange}${font Droid Sans:size=9}${execi 300 cat /tmp/moon.txt}
+${hr}
+${font Monospace:size=9}PEI: ${execpi 100 python /home/martin/bin/bioconky.py 0}
+${voffset 5}${alignr}${font Monospace:size=9}+1d: ${execpi 100 python /home/martin/bin/bioconky.py 1}
+${alignr}${font Monospace:size=9}+2d: ${execpi 100 python /home/martin/bin/bioconky.py 2}
+${alignr}${font Monospace:size=9}+3d: ${execpi 100 python /home/martin/bin/bioconky.py 3}
+${alignr}${font Monospace:size=9}+4d: ${execpi 100 python /home/martin/bin/bioconky.py 4}
+${hr}
+${color1}${font Droid Sans:size=8} CPU 0: ${alignr}${cpubar 8,80 cpu0}
+${color1}${font Droid Sans:size=8} CPU 1: ${alignr}${cpubar 8,80 cpu1}
+${color1}${font Droid Sans:size=8} RAM: $memperc% ${alignr}${membar 8,80}
+${voffset 5}${color1}${font Droid Sans:size=8} Root:$alignr${fs_used /} / ${fs_free /}
+${hr}
+${voffset 5}${color1}${font Droid Sans:size=8} Uptime: ${alignr}${uptime}
+${color1}${font Droid Sans:size=8} Uplink: ${alignr}${upspeed eth0} (${totalup eth0} total)
+${color1}${font Droid Sans:size=8} Downlink: ${alignr}${downspeed eth0} (${totaldown eth0} total)
+${color1}${font Droid Sans:size=8} Router ping: ${alignr}${execi 120 ping -c 1 192.168.2.1|grep icmp_seq|cut -c51-64}
+${hr}
+${color1}${font Droid Sans:size=8} CPU 0: ${alignr}${execi 20 sensors coretemp-isa-0000|grep "Core 0"|cut -c18-24}
+${color1}${font Droid Sans:size=8} CPU 1: ${alignr}${execi 20 sensors coretemp-isa-0000|grep "Core 1"|cut -c18-24}
+${color1}${font Droid Sans:size=8} Radeon: ${alignr}${execi 20 sensors radeon-pci-0100|grep temp1|cut -c16-22}
+${hr}
+${alignc}CPU
+${goto 30}${color1}${font Droid Sans:size=8} ${top name 1} ${font Droid Sans:size=8}${alignr}${top cpu 1}
+${goto 30}${color1}${font Droid Sans:size=8} ${top name 2} ${font Droid Sans:size=8}${alignr}${top cpu 2}
+${goto 30}${color1}${font Droid Sans:size=8} ${top name 3} ${font Droid Sans:size=8}${alignr}${top cpu 3}
+${hr}
+${alignc}MEM
+${goto 30}${color1}${font Droid Sans:size=8} ${top_mem name 1} ${font Droid Sans:size=8}${alignr}${top_mem mem 1}
+${goto 30}${color1}${font Droid Sans:size=8} ${top_mem name 2} ${font Droid Sans:size=8}${alignr}${top_mem mem 2}
+${goto 30}${color1}${font Droid Sans:size=8} ${top_mem name 3} ${font Droid Sans:size=8}${alignr}${top_mem mem 3}
+${hr}
+
